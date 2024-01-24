@@ -1,0 +1,36 @@
+67. Add Binary
+
+Given two binary strings a and b, return their sum as a binary string.
+
+Example 1:
+Input: a = "11", b = "1"
+Output: "100"
+
+Example 2:
+Input: a = "1010", b = "1011"
+Output: "10101"
+
+========================================================================================================================================
+Solutions:
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        decimal_value = 0
+        binary_str = a[::-1]  # Reverse the string to start from the rightmost bit
+
+        for i in range(len(binary_str)):
+            if binary_str[i] == '1':
+                decimal_value += 2**i
+
+        decimal = 0
+        binary = b[::-1]
+        for i in range(len(binary)):
+            if binary[i] == '1':
+                decimal += 2**i
+        
+        final = decimal_value+decimal
+        binary_r = bin(final)[2:]
+        return binary_r
+
+
+        
+        
